@@ -1,0 +1,45 @@
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+-- The animation for the dribble/drive move
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://117563568606478"  -- Replace with your desired animation ID
+local animationTrack = humanoid:LoadAnimation(animation)
+
+-- Sound for the move
+local sound = Instance.new("Sound")
+sound.SoundId = "rbxassetid://7147847068"  -- Change the sound ID
+sound.Parent = humanoidRootPart  -- You can attach the sound to the character's root part
+
+-- Function to trigger the ability
+local function triggerAbility()
+    -- Play the sound at the start of the move
+    sound:Play()
+
+    -- Start the animation immediately
+    animationTrack:Play()
+    animationTrack:AdjustSpeed(4)
+
+    -- Fire the ball immediately as the animation starts
+    local args = {
+        [1] = 200,  -- Adjust force as necessary
+    }
+    game:GetService("ReplicatedStorage").Packages.Knit.Services.BallService.RE.Shoot:FireServer(unpack(args))
+end
+
+-- Clone the ability button
+local Clone2 = game.Players.LocalPlayer.PlayerGui.InGameUI.Bottom.Abilities["1"]:Clone()
+Clone2.Parent = game.Players.LocalPlayer.PlayerGui.InGameUI.Bottom.Abilities
+Clone2.LayoutOrder = -3
+Clone2.Keybind.Text = "Z"
+Clone2.Timer.Text = "Satoru Shot"
+Clone2.ActualTimer.Text = ""
+Clone2.Cooldown:Destroy()
+
+-- Listen for the button activation
+Clone2.Activated:Connect(function()
+    -- Trigger the ability when the button is clicked
+    triggerAbility()
+end)
