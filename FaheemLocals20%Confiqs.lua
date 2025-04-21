@@ -1,11 +1,11 @@
 local Configs_HUB = {
-  Cor_Hub = Color3.fromRGB(0, 0, 0),
+  Cor_Hub = Color3.fromRGB(140, 0, 255),
   Cor_Options = Color3.fromRGB(15, 15, 15),
   Cor_Stroke = Color3.fromRGB(0, 0, 0),
-  Cor_Text = Color3.fromRGB(240, 240, 240),
+  Cor_Text = Color3.fromRGB(0, 4, 245),
   Cor_DarkText = Color3.fromRGB(240, 240, 240),
   Corner_Radius = UDim.new(0,4),
-  Text_Font = Enum.Font.FredokaOne
+  Text_Font = Enum.Font.IndieFlower
 }
 
 local CoreGui = game:GetService("CoreGui")
@@ -217,7 +217,7 @@ function MakeWindow(Configs)
       Position = UDim2.new(1, -10, 0, 5),
       AnchorPoint = Vector2.new(1, 0),
       Text = "X",
-      Font = Enum.Font.FredokaOne,
+      Font = Enum.Font.IndieFlower,
       TextScaled = true,
       TextColor3 = Color3.fromRGB(240, 0, 0),
       BackgroundTransparency = 1,
@@ -379,7 +379,7 @@ function MakeWindow(Configs)
   end)
   
   local Close_Button = Create("TextButton", ButtonsFrame, {
-    Text = "×",
+    Text = "x",
     TextYAlignment = "Bottom",
     TextColor3 = Configs_HUB.Cor_Text,
     Size = UDim2.new(0.5, 0, 1, 0),
@@ -413,7 +413,7 @@ function MakeWindow(Configs)
     
     local Mensage = Create("TextLabel", CloseMenu, {
       Size = UDim2.new(0.8, 0, 0.25, 0),
-      Text = "are you sure you want to close this script??",
+      Text = "Are really sure you want to close this its permanent...",
       Position = UDim2.new(0.1, 0, 0.2),
       TextColor3 = Configs_HUB.Cor_Text,
       Font = Configs_HUB.Text_Font,
@@ -425,7 +425,7 @@ function MakeWindow(Configs)
       Size = UDim2.new(0.35, 0, 0.3, 0),
       Position = UDim2.new(0.1, 0, 0.5, 0),
       BackgroundColor3 = Configs_HUB.Cor_Hub,
-      Text = "Close Script",
+      Text = "Closing Script...",
       Font = Configs_HUB.Text_Font,
       TextColor3 = Color3.fromRGB(240, 0, 0),
       TextSize = 20
